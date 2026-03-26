@@ -1,0 +1,99 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { cn } from "@/lib/utils"
+import { Menu, X } from "lucide-react"
+import { ThemeToggle } from "./theme-toggle"
+import { DesLogo } from "./des-logo"
+
+const navLinks = [
+  { label: "Home", href: "#" },
+  { label: "Program", href: "#program" },
+  { label: "Careers", href: "#stats" },
+  { label: "Contact", href: "#cta" },
+]
+
+export function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <nav
+      aria-label="Main navigation"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        scrolled
+          ? "bg-background/80 backdrop-blur-xl border-b border-border"
+          : "bg-transparent"
+      )}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+        <a href="#" className="flex items-center" aria-label="DES Program - Go to homepage">
+          <DesLogo size="sm" />
+        </a>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary"
+            >
+              {link.label}
+            </a>
+          ))}
+          <ThemeToggle />
+          <a
+            href="#cta"
+            className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+          >
+            Apply Now
+          </a>
+        </div>
+
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-foreground"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div id="mobile-menu" role="menu" className="border-t border-border bg-background/95 backdrop-blur-xl md:hidden">
+          <div className="flex flex-col gap-4 px-6 py-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#cta"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 rounded-full bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+            >
+              Apply Now
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
+  )
+}

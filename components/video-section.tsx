@@ -1,0 +1,66 @@
+"use client"
+
+import { AnimateOnScroll } from "./animate-on-scroll"
+import { Play, ArrowRight } from "lucide-react"
+
+export function VideoSection() {
+  return (
+    <section id="video" aria-labelledby="video-heading" className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <AnimateOnScroll>
+          <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            See It In Action
+          </p>
+          <h2 id="video-heading" className="text-balance text-center text-3xl font-bold text-foreground md:text-4xl">
+            Experience Digital Marketing Excellence
+          </h2>
+        </AnimateOnScroll>
+
+        <div className="mt-16 grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
+          {/* Video Placeholder */}
+          <AnimateOnScroll animation="fade-in-up" delay={100}>
+            <div className="group relative w-full min-h-[320px] md:min-h-[380px] lg:min-h-[420px] overflow-hidden rounded-2xl border border-border bg-card">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button
+                  type="button"
+                  aria-label="Play video"
+                  className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 transition-all duration-300 group-hover:scale-110 md:h-20 md:w-20"
+                >
+                  <Play size={28} fill="currentColor" className="ml-1" />
+                </button>
+              </div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-sm text-muted-foreground">Program Overview</p>
+              </div>
+            </div>
+          </AnimateOnScroll>
+
+          {/* Text Content */}
+          <AnimateOnScroll animation="fade-in-up" delay={200}>
+            <div className="flex flex-col gap-5">
+              <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+                Level up your marketing game at Centennial College with the Marketing – Digital Engagement Strategy graduate certificate. This two-semester program turns you into a digital pro, covering everything from data and content strategy to paid media through flexible on-campus, hybrid, or evening classes. You'll master tools like Google Ads and Meta Blueprint through hands-on training from industry experts, all while building a serious edge with an optional 4-month co-op.
+              </p>
+              <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+                The highlight? A Capstone Project where you tackle a real-world business challenge to create portfolio-ready work before you even graduate. Between guest speaker sessions, networking events, and a free CMA membership that fast-tracks you to becoming a Chartered Marketer, you'll be connected to leaders from brands like Google and Mercedes-Benz. It’s the ultimate way to bridge the gap between student and pro.
+              </p>
+              <div className="mt-2">
+                <a
+                  href="#program"
+                  className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
+                >
+                  Learn More About Our Approach
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </a>
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </div>
+    </section>
+  )
+}
