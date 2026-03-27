@@ -33,42 +33,47 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-        <a href="#" className="flex items-center" aria-label="DES Program - Go to homepage">
-          <DesLogo size="sm" />
-        </a>
-
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary"
-            >
-              {link.label}
-            </a>
-          ))}
-          <ThemeToggle />
-          <a
-            href="#cta"
-            className="bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-black transition-colors duration-300 hover:bg-primary/90"
-          >
-            Apply Now
+      <div className="mx-auto flex max-w-7xl items-stretch">
+        {/* Left section with logo and nav links */}
+        <div className="flex flex-1 items-center justify-between px-6 py-3">
+          <a href="#" className="flex items-center" aria-label="DES Program - Go to homepage">
+            <DesLogo size="sm" />
           </a>
+
+          <div className="hidden items-center gap-8 md:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary"
+              >
+                {link.label}
+              </a>
+            ))}
+            <ThemeToggle />
+          </div>
+
+          <div className="flex items-center gap-3 md:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="text-foreground"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3 md:hidden">
-          <ThemeToggle />
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-foreground"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        {/* Apply Now button - full height, outside the padded container */}
+        <a
+          href="#cta"
+          className="hidden items-center bg-primary px-8 text-sm font-bold uppercase tracking-wide text-black transition-colors duration-300 hover:bg-primary/90 md:flex"
+        >
+          Apply Now
+        </a>
       </div>
 
       {mobileOpen && (

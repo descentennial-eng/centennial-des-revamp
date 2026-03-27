@@ -105,8 +105,8 @@ const config: Config = {
           '50%': { boxShadow: '0 0 30px 5px hsl(68 68% 49% / 0.35)' },
         },
         'marquee': {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
+          '0%': { transform: 'translate3d(0, 0, 0)' },
+          '100%': { transform: 'translate3d(-33.333%, 0, 0)' },
         },
       },
       animation: {
