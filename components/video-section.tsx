@@ -16,10 +16,10 @@ export function VideoSection() {
           </h2>
         </AnimateOnScroll>
 
-        <div className="mt-16 grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
+        <div className="mt-16 grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 md:items-center ">
           {/* Video Placeholder */}
-          <AnimateOnScroll animation="fade-in-up" delay={100}>
-            <div className="group relative w-full min-h-[320px] md:min-h-[380px] lg:min-h-[420px] overflow-hidden rounded-2xl border border-border bg-card">
+          <AnimateOnScroll animation="fade-in-up" delay={100} className="h-full">
+            <div className="group relative w-full min-h-[360px] md:min-h-[420px] lg:min-h-[460px] overflow-hidden rounded-2xl border border-border bg-card">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <button
@@ -37,10 +37,10 @@ export function VideoSection() {
           </AnimateOnScroll>
 
           {/* Text Content */}
-          <AnimateOnScroll animation="fade-in-up" delay={200}>
-            <div className="flex flex-col gap-5">
+          <AnimateOnScroll animation="fade-in-up" delay={200} className="h-full">
+            <div className="flex h-full flex-col justify-center gap-5">
               <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-                Level up your marketing game at Centennial College with the Marketing – Digital Engagement Strategy graduate certificate. This two-semester program turns you into a digital pro, covering everything from data and content strategy to paid media through flexible on-campus, hybrid, or evening classes. You'll master tools like Google Ads and Meta Blueprint through hands-on training from industry experts, all while building a serious edge with an optional 4-month co-op.
+                Level up your marketing game at Centennial College with the Marketing - Digital Engagement Strategy graduate certificate. This two-semester program turns you into a digital pro, covering everything from data and content strategy to paid media through flexible on-campus, hybrid, or evening classes. You'll master tools like Google Ads and Meta Blueprint through hands-on training from industry experts, all while building a serious edge with an optional 4-month co-op.
               </p>
               <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
                 The highlight? A Capstone Project where you tackle a real-world business challenge to create portfolio-ready work before you even graduate. Between guest speaker sessions, networking events, and a free CMA membership that fast-tracks you to becoming a Chartered Marketer, you'll be connected to leaders from brands like Google and Mercedes-Benz. It’s the ultimate way to bridge the gap between student and pro.
