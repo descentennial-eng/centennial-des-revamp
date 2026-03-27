@@ -51,7 +51,7 @@ export function Navbar() {
           <ThemeToggle />
           <a
             href="#cta"
-            className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+            className="bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-black transition-colors duration-300 hover:bg-primary/90"
           >
             Apply Now
           </a>
@@ -87,7 +87,7 @@ export function Navbar() {
             <a
               href="#cta"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-full bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+              className="mt-2 bg-primary px-6 py-3 text-center text-sm font-bold uppercase tracking-wide text-black"
             >
               Apply Now
             </a>
