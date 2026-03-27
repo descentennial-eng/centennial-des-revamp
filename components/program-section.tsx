@@ -90,8 +90,8 @@ export function ProgramSection() {
 
           {/* Video Placeholder - Right Side */}
           <AnimateOnScroll animation="fade-in-right" delay={200}>
-            <div className="mx-auto flex w-full max-w-[280px] items-center justify-center lg:mx-0">
-              <div className="group relative aspect-[9/16] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-500 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5">
+            <div className="mx-auto flex h-full w-[280px] items-stretch lg:mx-0">
+              <div className="group relative h-[500px] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-500 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5">
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-primary/10" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
