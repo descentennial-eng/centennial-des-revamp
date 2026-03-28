@@ -16,9 +16,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Alumni Success Stories | Digital Engagement Strategy - Centennial College',
+  title: 'Marketing - Digital Engagement Strategy | Hands-On Toronto Certificate with Co-op - Centennial College',
   description:
-    'Discover how graduates of Centennial College\'s Digital Engagement Strategy program are shaping the future of digital marketing. Real stories, real careers.',
+    'Build real campaigns, earn certifications, and access optional co-op. Job-ready in 12 months - apply for September 2026.',
 }
 
 export const viewport: Viewport = {
