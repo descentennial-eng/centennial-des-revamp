@@ -1,10 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
-import { DesLogo } from "./des-logo"
 
 const navLinks = [
   { label: "Home", href: "#" },
@@ -16,6 +17,12 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -36,8 +43,17 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-stretch">
         {/* Left section with logo and nav links */}
         <div className="flex flex-1 items-center justify-between px-6 py-3">
-          <a href="#" className="flex items-center" aria-label="DES Program - Go to homepage">
-            <DesLogo size="sm" />
+          <a href="#" className="flex items-center" aria-label="Centennial College - Go to homepage">
+            {mounted && (
+              <Image
+                src={resolvedTheme === "dark" ? "/images/logo-dark.jpg" : "/images/logo-light.png"}
+                alt="Centennial College"
+                width={180}
+                height={50}
+                className="h-10 w-auto"
+                priority
+              />
+            )}
           </a>
 
           <div className="hidden items-center gap-8 md:flex">
