@@ -1,17 +1,18 @@
 "use client"
 
+import Image from "next/image"
 import { AnimateOnScroll } from "./animate-on-scroll"
 
 const cofounders = [
   {
-    name: "Dr. Jane Smith",
+    name: "Dr. Andrew Ko",
     title: "Program Director & Co-founder",
-    image: null, // Placeholder for now
+    image: "/images/dr-andrew-ko.jpg",
   },
   {
-    name: "Prof. John Davis",
+    name: "Prof. Jason Beaulieu",
     title: "Industry Relations & Co-founder",
-    image: null, // Placeholder for now
+    image: "/images/prof-jason-beaulieu.jpg",
   },
 ]
 
@@ -33,9 +34,15 @@ export function FacultySection() {
               delay={200}
             >
               <div className="flex flex-col items-center">
-                {/* Photo Placeholder */}
-                <div className="flex aspect-square w-full items-center justify-center rounded-lg bg-[#c4c4c4]">
-                  <span className="text-lg text-[#4a4a4a]">Faculty Photo</span>
+                {/* Faculty Photo */}
+                <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-[#c4c4c4]">
+                  <Image
+                    src={faculty.image}
+                    alt={faculty.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
                 
                 {/* Name */}
