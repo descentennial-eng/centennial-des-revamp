@@ -92,7 +92,7 @@ export function ProgramSection() {
             <div className="mx-auto flex h-full w-[280px] items-stretch lg:mx-0">
               <div className="relative h-[500px] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
                 <iframe
-                  src="https://player.vimeo.com/video/1178509492?badge=0&autopause=0&player_id=0&app_id=58479"
+                  src="https://player.vimeo.com/video/1178509492?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                   referrerPolicy="strict-origin-when-cross-origin"
                   title="Prof Jason Vid"
