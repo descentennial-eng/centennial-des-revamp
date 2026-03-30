@@ -6,7 +6,6 @@ import {
   Globe,
   Megaphone,
   Users,
-  Play,
 } from "lucide-react"
 
 const features = [
@@ -88,24 +87,17 @@ export function ProgramSection() {
             ))}
           </div>
 
-          {/* Video Placeholder - Right Side */}
+          {/* Video - Right Side */}
           <AnimateOnScroll animation="fade-in-right" delay={200}>
             <div className="mx-auto flex h-full w-[280px] items-stretch lg:mx-0">
-              <div className="group relative h-[500px] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-500 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-primary/10" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Play size={28} className="ml-1" />
-                  </div>
-                  <p className="text-sm font-medium text-muted-foreground">
-                    Watch Student Story
-                  </p>
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2">
-                  <div className="h-1 flex-1 rounded-full bg-primary/20" />
-                  <span className="text-xs text-muted-foreground">0:45</span>
-                </div>
+              <div className="relative h-[500px] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+                <iframe
+                  src="https://player.vimeo.com/video/1178509492?badge=0&autopause=0&player_id=0&app_id=58479"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Prof Jason Vid"
+                  className="absolute inset-0 h-full w-full"
+                />
               </div>
             </div>
           </AnimateOnScroll>
