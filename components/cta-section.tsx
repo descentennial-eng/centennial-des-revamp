@@ -22,24 +22,28 @@ export function CtaSection() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`DES Program Inquiry from ${formData.fullName}`)
-    const body = encodeURIComponent(
-      `Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    )
-    
-    // Open email client
-    window.location.href = `mailto:jbeaulieu@centennialcollege.ca?subject=${subject}&body=${body}`
-    
-    // Show success state
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
       setIsSubmitted(true)
       setFormData({ fullName: "", email: "", phone: "", message: "" })
       
       // Reset success state after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000)
-    }, 500)
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      alert("Failed to send message. Please try again or contact us directly.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -141,7 +145,7 @@ export function CtaSection() {
                 ) : isSubmitted ? (
                   <>
                     <CheckCircle size={16} />
-                    Email Client Opened
+                    Message Sent Successfully
                   </>
                 ) : (
                   <>
