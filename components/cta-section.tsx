@@ -1,9 +1,51 @@
 "use client"
 
+import { useState } from "react"
 import { AnimateOnScroll } from "./animate-on-scroll"
-import { ArrowRight, Mail, Phone } from "lucide-react"
+import { ArrowRight, Mail, Phone, Loader2, CheckCircle } from "lucide-react"
 
 export function CtaSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      setIsSubmitted(true)
+      setFormData({ fullName: "", email: "", phone: "", message: "" })
+      
+      // Reset success state after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000)
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      alert("Failed to send message. Please try again or contact us directly.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section id="cta" aria-labelledby="cta-heading" className="relative bg-background py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -26,7 +68,7 @@ export function CtaSection() {
             </div>
 
             {/* Contact Form */}
-            <form className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <label htmlFor="fullName" className="text-sm font-medium text-foreground">
                   Full Name
@@ -35,6 +77,9 @@ export function CtaSection() {
                   type="text"
                   id="fullName"
                   name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required
                   placeholder="Enter your full name"
                   className="h-12 w-full rounded-lg border border-border bg-card px-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
@@ -48,6 +93,9 @@ export function CtaSection() {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   placeholder="Enter your email address"
                   className="h-12 w-full rounded-lg border border-border bg-card px-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
@@ -61,6 +109,8 @@ export function CtaSection() {
                   type="tel"
                   id="phone"
                   name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="Enter your phone number"
                   className="h-12 w-full rounded-lg border border-border bg-card px-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
@@ -73,6 +123,9 @@ export function CtaSection() {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   rows={5}
                   placeholder="Enter your message"
                   className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
@@ -81,13 +134,28 @@ export function CtaSection() {
 
               <button
                 type="submit"
-                className="group mt-2 flex h-14 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
+                disabled={isSubmitting || isSubmitted}
+                className="group mt-2 flex h-14 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Submit Inquiry
-                <ArrowRight
-                  size={16}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Sending...
+                  </>
+                ) : isSubmitted ? (
+                  <>
+                    <CheckCircle size={16} />
+                    Message Sent Successfully
+                  </>
+                ) : (
+                  <>
+                    Submit Inquiry
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </>
+                )}
               </button>
             </form>
 
