@@ -48,7 +48,7 @@ export function HeroSection() {
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5">
           <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
           <span className="text-xs font-medium text-muted-foreground">
-            Now Accepting Applications for Fall 2026
+            Now Accepting Applications for September 2026
           </span>
         </div>
 
