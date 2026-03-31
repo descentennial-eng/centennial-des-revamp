@@ -1,8 +1,53 @@
+"use client"
+
 import { ArrowDown, ArrowRight } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export function HeroSection() {
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Vimeo video URL - replace with actual video URL
+  const videoUrl = "https://player.vimeo.com/progressive_redirect/playback/748225739/rendition/720p/file.mp4?loc=external"
+
+  useEffect(() => {
+    // Check if mobile on mount and on resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   return (
     <section aria-label="Introduction to Digital Engagement Strategy program" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+      {/* Fallback background - always visible, shown when video not loaded or on mobile */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background via-background to-background/95" />
+
+      {/* Background video - only on desktop */}
+      {!isMobile && (
+        <div className="pointer-events-none absolute inset-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onCanPlay={() => setVideoLoaded(true)}
+            onError={() => setVideoLoaded(false)}
+            className={`h-full w-full object-cover transition-opacity duration-1000 ${
+              videoLoaded ? "opacity-20" : "opacity-0"
+            }`}
+          >
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        </div>
+      )}
+
+      {/* Dark overlay for text readability */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-background/75 to-background/85" />
+
       {/* Background grid */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
         <div
