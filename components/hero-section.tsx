@@ -8,7 +8,7 @@ export function HeroSection() {
   const [isMobile, setIsMobile] = useState(false)
 
   // Vimeo video URL - replace with actual video URL
-  const videoUrl = "https://player.vimeo.com/progressive_redirect/playback/748225739/rendition/720p/file.mp4?loc=external"
+  const videoUrl = "https://vimeo.com/1179000966?share=copy&fl=sv&fe=ci"
 
   useEffect(() => {
     // Check if mobile on mount and on resize
