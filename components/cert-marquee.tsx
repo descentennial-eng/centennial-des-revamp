@@ -36,13 +36,13 @@ function CertImage({ cert }: { cert: CertificationImage }) {
         <img
           src={cert.lightSrc}
           alt={`${cert.name} certification`}
-          className="block h-12 w-auto object-contain dark:hidden sm:h-14 md:h-16 lg:h-20"
+          className="block h-12 max-w-[120px] object-contain dark:hidden sm:h-14 sm:max-w-[140px] md:h-16 md:max-w-[160px] lg:h-20 lg:max-w-[180px]"
           loading="lazy"
         />
         <img
           src={cert.darkSrc}
           alt={`${cert.name} certification`}
-          className="hidden h-12 w-auto object-contain dark:block sm:h-14 md:h-16 lg:h-20"
+          className="hidden h-12 max-w-[120px] object-contain dark:block sm:h-14 sm:max-w-[140px] md:h-16 md:max-w-[160px] lg:h-20 lg:max-w-[180px]"
           loading="lazy"
         />
       </>
@@ -53,7 +53,7 @@ function CertImage({ cert }: { cert: CertificationImage }) {
     <img
       src={cert.src}
       alt={`${cert.name} certification`}
-      className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
+      className="h-12 max-w-[120px] object-contain sm:h-14 sm:max-w-[140px] md:h-16 md:max-w-[160px] lg:h-20 lg:max-w-[180px]"
       loading="lazy"
     />
   )
