@@ -22,13 +22,6 @@ export function HeroSection() {
 
       {/* Background video - Vimeo iframe embed */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Video poster fallback - shows while video loads or if video fails */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{
-            backgroundImage: "url('https://i.vimeocdn.com/video/1179000966-1a2b3c4d5e6f7g8h9i0j_1920x1080?r=pad')",
-          }}
-        />
         <div
           className={`absolute inset-0 transition-opacity duration-1000 ${
             videoLoaded ? "opacity-40" : "opacity-0"
