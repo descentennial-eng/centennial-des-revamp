@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { AnimateOnScroll } from "./animate-on-scroll"
 
+const rotatingWords = ["Results.", "Impact.", "Growth.", "Outcomes."]
+
 function AnimatedCounter({ end, suffix = "", duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
@@ -44,6 +46,20 @@ const stats = [
 ]
 
 export function StatsSection() {
+  const [wordIndex, setWordIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % rotatingWords.length)
+        setIsAnimating(false)
+      }, 400)
+    }, 2800)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="stats" aria-labelledby="stats-heading" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -51,8 +67,21 @@ export function StatsSection() {
           <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-primary">
             By the Numbers
           </p>
-          <h2 id="stats-heading" className="text-balance text-center text-3xl font-bold text-foreground md:text-4xl">
-            Results That Speak for Themselves
+          <h2 id="stats-heading" className="text-balance text-center text-3xl font-bold text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
+            We Build Digital{" "}
+            <span className="relative inline-block">
+              <span
+                aria-live="polite"
+                aria-atomic="true"
+                className={`inline-block text-primary transition-all duration-400 ${
+                  isAnimating
+                    ? "translate-y-2 opacity-0"
+                    : "translate-y-0 opacity-100"
+                }`}
+              >
+                {rotatingWords[wordIndex]}
+              </span>
+            </span>
           </h2>
         </AnimateOnScroll>
 
