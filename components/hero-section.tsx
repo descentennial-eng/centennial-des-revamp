@@ -25,7 +25,7 @@ export function HeroSection() {
         {/* Main H1 - largest, bold, uppercase */}
         <h1 className="text-balance text-2xl font-bold uppercase leading-none tracking-tight text-foreground sm:text-3xl md:text-5xl lg:text-6xl">
           Marketing – Digital Engagement Strategy Certificate
-          <span className="mt-2 block text-base font-medium uppercase tracking-widest text-foreground/60 sm:text-lg md:text-2xl lg:text-3xl">
+          <span className="mt-4 block text-base font-medium uppercase tracking-[0.25em] text-foreground/40 sm:mt-5 sm:text-lg md:mt-6 md:text-2xl lg:text-3xl">
             Toronto • Co-op
           </span>
         </h1>
