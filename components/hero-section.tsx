@@ -7,9 +7,6 @@ export function HeroSection() {
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
-  // Vimeo video URL - replace with actual video URL
-  const videoUrl = "https://vimeo.com/1179000966?share=copy&fl=sv&fe=ci"
-
   useEffect(() => {
     // Check if mobile on mount and on resize
     const checkMobile = () => {
@@ -17,7 +14,14 @@ export function HeroSection() {
     }
     checkMobile()
     window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
+
+    // Set video as loaded after a short delay to allow iframe to initialize
+    const timer = setTimeout(() => setVideoLoaded(true), 1000)
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+      clearTimeout(timer)
+    }
   }, [])
 
   return (
@@ -25,23 +29,33 @@ export function HeroSection() {
       {/* Fallback background - always visible, shown when video not loaded or on mobile */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background via-background to-background/95" />
 
-      {/* Background video - only on desktop */}
+      {/* Background video - Vimeo iframe embed, only on desktop */}
       {!isMobile && (
-        <div className="pointer-events-none absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            onCanPlay={() => setVideoLoaded(true)}
-            onError={() => setVideoLoaded(false)}
-            className={`h-full w-full object-cover transition-opacity duration-1000 ${
-              videoLoaded ? "opacity-20" : "opacity-0"
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              videoLoaded ? "opacity-25" : "opacity-0"
             }`}
+            style={{
+              // Scale up to cover the container and hide Vimeo controls
+              transform: "scale(1.2)",
+            }}
           >
-            <source src={videoUrl} type="video/mp4" />
-          </video>
+            <iframe
+              src="https://player.vimeo.com/video/1179000966?badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1&autoplay=1"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Background video"
+              className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2"
+              style={{
+                minWidth: "100%",
+                minHeight: "100%",
+                width: "177.77777778vh", // 16:9 aspect ratio
+                height: "56.25vw", // 16:9 aspect ratio
+              }}
+            />
+          </div>
         </div>
       )}
 
