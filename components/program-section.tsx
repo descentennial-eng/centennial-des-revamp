@@ -33,7 +33,7 @@ const features = [
     icon: Users,
     title: "Career-Ready Co-op",
     description:
-      "Optional 6-month co-op gives you real Canadian market experience employers demand.",
+      "Optional 3-month co-op gives you real Canadian market experience employers demand.",
   },
 ]
 
