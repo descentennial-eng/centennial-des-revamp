@@ -1,9 +1,44 @@
+"use client"
+
 import { ArrowDown, ArrowRight } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export function HeroSection() {
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Check if mobile on mount and resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   return (
     <section aria-label="Introduction to Digital Engagement Strategy program" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
-      {/* Background grid */}
+      {/* Background video - hidden on mobile */}
+      {!isMobile && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          onCanPlay={() => setVideoLoaded(true)}
+          className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+            videoLoaded ? "opacity-20" : "opacity-0"
+          }`}
+        >
+          <source src="https://player.vimeo.com/progressive_redirect/playback/1074227514/rendition/1080p/file.mp4?loc=external&signature=85e8fccb11c81d5a53bdc87e09ac6e6b0e3c5c4a0b1d2e3f4a5b6c7d8e9f0123" type="video/mp4" />
+        </video>
+      )}
+
+      {/* Dark overlay for text readability */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/90" />
+
+      {/* Background grid - serves as fallback */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
         <div
           className="h-full w-full"
