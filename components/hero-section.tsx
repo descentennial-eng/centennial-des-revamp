@@ -34,7 +34,7 @@ export function HeroSection() {
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              videoLoaded ? "opacity-25" : "opacity-0"
+              videoLoaded ? "opacity-40" : "opacity-0"
             }`}
             style={{
               // Scale up to cover the container and hide Vimeo controls
