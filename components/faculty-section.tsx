@@ -6,12 +6,12 @@ import { AnimateOnScroll } from "./animate-on-scroll"
 const cofounders = [
   {
     name: "Dr. Andrew Ko",
-    title: "Program Director & Co-founder",
+    title: "Industry Relations & Co-founder",
     image: "/images/dr-andrew-ko.jpg",
   },
   {
     name: "Prof. Jason Beaulieu",
-    title: "Industry Relations & Co-founder",
+    title: "Program Director & Co-founder",
     image: "/images/prof-jason-beaulieu.jpg",
   },
 ]

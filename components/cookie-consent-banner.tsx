@@ -2,17 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
-
-const CONSENT_KEY = 'cookie-consent'
-
-type ConsentStatus = 'accepted' | 'rejected' | null
+import { getCookieConsent, setCookieConsent } from '@/lib/cookie-consent'
 
 export function CookieConsentBanner() {
   const [isVisible, setIsVisible] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem(CONSENT_KEY) as ConsentStatus
+    const consent = getCookieConsent()
     if (!consent) {
       // Small delay for smooth entrance animation
       const timer = setTimeout(() => {
@@ -26,7 +23,7 @@ export function CookieConsentBanner() {
   }, [])
 
   const handleConsent = (status: 'accepted' | 'rejected') => {
-    localStorage.setItem(CONSENT_KEY, status)
+    setCookieConsent(status)
     setIsAnimating(false)
     // Wait for exit animation before hiding
     setTimeout(() => {
