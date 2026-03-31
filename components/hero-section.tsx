@@ -47,12 +47,10 @@ export function HeroSection() {
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               referrerPolicy="strict-origin-when-cross-origin"
               title="Background video"
-              className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{
-                minWidth: "100%",
-                minHeight: "100%",
-                width: "177.77777778vh", // 16:9 aspect ratio
-                height: "56.25vw", // 16:9 aspect ratio
+                width: "max(100%, 177.77777778vh)", // Always cover width (16:9 ratio)
+                height: "max(100%, 56.25vw)", // Always cover height (16:9 ratio)
               }}
             />
           </div>
