@@ -49,6 +49,8 @@ export function StatsSection() {
   const [wordIndex, setWordIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
+  console.log("[v0] StatsSection rendering, wordIndex:", wordIndex, "isAnimating:", isAnimating)
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAnimating(true)

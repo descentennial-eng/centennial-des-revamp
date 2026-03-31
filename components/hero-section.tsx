@@ -1,7 +1,6 @@
 import { ArrowDown, ArrowRight } from "lucide-react"
 
 export function HeroSection() {
-  // Hero section for the Digital Engagement Strategy program
   return (
     <section aria-label="Introduction to Digital Engagement Strategy program" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
       {/* Background grid */}
