@@ -52,7 +52,8 @@ export function HeroSection() {
           </span>
         </div>
 
-        <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-7xl">
+        {/* Animated headline - smallest */}
+        <p className="mb-4 text-base font-medium tracking-wide text-muted-foreground sm:text-lg md:text-xl">
           We Build Digital{" "}
           <span className="relative inline-block">
             <span
@@ -60,18 +61,23 @@ export function HeroSection() {
               aria-atomic="true"
               className={`inline-block text-primary transition-all duration-400 ${
                 isAnimating
-                  ? "translate-y-4 opacity-0"
+                  ? "translate-y-2 opacity-0"
                   : "translate-y-0 opacity-100"
               }`}
             >
               {words[wordIndex]}
             </span>
           </span>
+        </p>
+
+        {/* Main H1 - largest, bold */}
+        <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
+          Marketing – Digital Engagement Strategy: Hands-On Toronto Certificate with Co-op
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-          Centennial College&apos;s Digital Engagement Strategy program transforms
-          ambitious professionals into career-ready digital marketing experts.
+        {/* Subheadline - medium */}
+        <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
+          Build real campaigns, earn certifications, and access optional co-op. Job-ready in 12 months – apply for September 2026.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
