@@ -66,7 +66,7 @@ export function StatsSection() {
     <section id="stats" aria-labelledby="stats-heading" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         {/* Animated headline - above section header */}
-        <AnimateOnScroll animation="fade-up">
+        {/* <AnimateOnScroll animation="fade-up"> */}
           <p className="mb-8 text-balance text-center text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
             We Build Digital{" "}
             <span className="relative inline-block">
@@ -83,7 +83,7 @@ export function StatsSection() {
               </span>
             </span>
           </p>
-        </AnimateOnScroll>
+        {/* </AnimateOnScroll> */}
 
         <AnimateOnScroll>
           <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-primary">
