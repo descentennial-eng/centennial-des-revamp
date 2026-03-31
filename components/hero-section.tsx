@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { ArrowDown, ArrowRight } from "lucide-react"
-import { DesLogo } from "./des-logo"
 
-const words = ["Strategists.", "Innovators.", "Leaders.", "Creators."]
+const words = ["Innovators", "Strategists", "Creators", "Leaders"]
 
 export function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0)
@@ -41,18 +40,8 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
-        <div className="mb-8 flex justify-center">
-          <DesLogo size="lg" className="items-center" />
-        </div>
-
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5">
-          <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-xs font-medium text-muted-foreground">
-            Now Accepting Applications for September 2026
-          </span>
-        </div>
-
-        <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-7xl">
+        {/* Animated headline - engaging, medium-large */}
+        <p className="mb-4 text-balance text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
           We Build Digital{" "}
           <span className="relative inline-block">
             <span
@@ -67,11 +56,17 @@ export function HeroSection() {
               {words[wordIndex]}
             </span>
           </span>
+        </p>
+
+        {/* Main H1 - largest, bold */}
+        <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-6xl lg:text-7xl">
+          Marketing – Digital Engagement Strategy Certificate
+          <span className="block text-muted-foreground">(Toronto, Co-op)</span>
         </h1>
 
+        {/* Subheadline - supporting */}
         <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-          Centennial College&apos;s Digital Engagement Strategy program transforms
-          ambitious professionals into career-ready digital marketing experts.
+          Build real campaigns, earn certifications, and access optional co-op. Job-ready in 12 months – apply for September 2026.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
