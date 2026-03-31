@@ -69,7 +69,15 @@ export function HeroSection() {
           Build real campaigns, earn certifications, and access optional co-op. Job-ready in 12 months – apply for September 2026.
         </p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        {/* Badge */}
+        <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5">
+          <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-medium text-muted-foreground">
+            Now Accepting Applications for September 2026
+          </span>
+        </div>
+
+        <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#testimonials"
             className="group rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-xl hover:shadow-primary/20"
