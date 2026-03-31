@@ -39,7 +39,7 @@ function AnimatedCounter({ end, suffix = "", duration = 2000 }: { end: number; s
 
 const stats = [
   { value: 15, suffix: "+", label: "Industry Certifications", description: "Google, HubSpot, Meta and more" },
-  { value: 6, suffix: " mo", label: "Optional Co-op Term", description: "Real Canadian market experience" },
+  { value: 3, suffix: " mo", label: "Optional Co-op Term", description: "Real Canadian market experience" },
   { value: 100, suffix: "%", label: "Hands-On Learning", description: "Real campaigns, real budgets, real results" },
 ]
 
