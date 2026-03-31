@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { AnimateOnScroll } from "./animate-on-scroll"
 
+const words = ["Innovators", "Strategists", "Creators", "Leaders"]
+
 function AnimatedCounter({ end, suffix = "", duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
@@ -44,9 +46,45 @@ const stats = [
 ]
 
 export function StatsSection() {
+  const [wordIndex, setWordIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  console.log("[v0] StatsSection rendering, wordIndex:", wordIndex, "isAnimating:", isAnimating)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % words.length)
+        setIsAnimating(false)
+      }, 400)
+    }, 2800)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="stats" aria-labelledby="stats-heading" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
+        {/* Animated headline - above section header */}
+        <AnimateOnScroll animation="fade-up">
+          <p className="mb-8 text-balance text-center text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
+            We Build Digital{" "}
+            <span className="relative inline-block">
+              <span
+                aria-live="polite"
+                aria-atomic="true"
+                className={`inline-block text-primary transition-all duration-400 ${
+                  isAnimating
+                    ? "translate-y-4 opacity-0"
+                    : "translate-y-0 opacity-100"
+                }`}
+              >
+                {words[wordIndex]}
+              </span>
+            </span>
+          </p>
+        </AnimateOnScroll>
+
         <AnimateOnScroll>
           <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-primary">
             By the Numbers
