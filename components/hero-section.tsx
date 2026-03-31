@@ -21,11 +21,13 @@ export function HeroSection() {
         <div className="h-[600px] w-[600px] rounded-full bg-primary/5 blur-[120px]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl text-center">
-        {/* Main H1 - largest, bold */}
-        <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-6xl lg:text-7xl">
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
+        {/* Main H1 - largest, bold, uppercase */}
+        <h1 className="text-balance text-2xl font-bold uppercase leading-none tracking-tight text-foreground sm:text-3xl md:text-5xl lg:text-6xl">
           Marketing – Digital Engagement Strategy Certificate
-          <span className="block text-muted-foreground">(Toronto, Co-op)</span>
+          <span className="mt-2 block text-base font-medium uppercase tracking-widest text-foreground/60 sm:text-lg md:text-2xl lg:text-3xl">
+            Toronto • Co-op
+          </span>
         </h1>
 
         {/* Subheadline - supporting */}
