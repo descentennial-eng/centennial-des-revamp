@@ -63,18 +63,9 @@ export function StatsSection() {
   return (
     <section id="stats" aria-labelledby="stats-heading" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <AnimateOnScroll>
-          <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            By the Numbers
-          </p>
-          <h2 id="stats-heading" className="text-balance text-center text-3xl font-bold text-foreground md:text-4xl">
-            Results That Speak for Themselves
-          </h2>
-        </AnimateOnScroll>
-
-        {/* Animated headline */}
-        <AnimateOnScroll animation="fade-up" delay={100}>
-          <p className="mt-12 text-balance text-center text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
+        {/* Animated headline - above section header */}
+        <AnimateOnScroll animation="fade-up">
+          <p className="mb-8 text-balance text-center text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
             We Build Digital{" "}
             <span className="relative inline-block">
               <span
@@ -92,7 +83,16 @@ export function StatsSection() {
           </p>
         </AnimateOnScroll>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-12 md:flex-row md:gap-24">
+        <AnimateOnScroll>
+          <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            By the Numbers
+          </p>
+          <h2 id="stats-heading" className="text-balance text-center text-3xl font-bold text-foreground md:text-4xl">
+            Results That Speak for Themselves
+          </h2>
+        </AnimateOnScroll>
+
+        <div className="mt-16 flex flex-col items-center justify-center gap-12 md:flex-row md:gap-24">
           {stats.map((stat, i) => (
             <AnimateOnScroll key={stat.label} animation="scale-in" delay={i * 120}>
               <div className="text-center">
