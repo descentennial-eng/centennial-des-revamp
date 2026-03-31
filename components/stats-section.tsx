@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { AnimateOnScroll } from "./animate-on-scroll"
 
+const words = ["Innovators", "Strategists", "Creators", "Leaders"]
+
 function AnimatedCounter({ end, suffix = "", duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
@@ -44,6 +46,20 @@ const stats = [
 ]
 
 export function StatsSection() {
+  const [wordIndex, setWordIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % words.length)
+        setIsAnimating(false)
+      }, 400)
+    }, 2800)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="stats" aria-labelledby="stats-heading" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -56,7 +72,27 @@ export function StatsSection() {
           </h2>
         </AnimateOnScroll>
 
-        <div className="mt-16 flex flex-col items-center justify-center gap-12 md:flex-row md:gap-24">
+        {/* Animated headline */}
+        <AnimateOnScroll animation="fade-up" delay={100}>
+          <p className="mt-12 text-balance text-center text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
+            We Build Digital{" "}
+            <span className="relative inline-block">
+              <span
+                aria-live="polite"
+                aria-atomic="true"
+                className={`inline-block text-primary transition-all duration-400 ${
+                  isAnimating
+                    ? "translate-y-4 opacity-0"
+                    : "translate-y-0 opacity-100"
+                }`}
+              >
+                {words[wordIndex]}
+              </span>
+            </span>
+          </p>
+        </AnimateOnScroll>
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-12 md:flex-row md:gap-24">
           {stats.map((stat, i) => (
             <AnimateOnScroll key={stat.label} animation="scale-in" delay={i * 120}>
               <div className="text-center">

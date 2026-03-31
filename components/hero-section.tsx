@@ -1,25 +1,6 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import { ArrowDown, ArrowRight } from "lucide-react"
 
-const words = ["Innovators", "Strategists", "Creators", "Leaders"]
-
 export function HeroSection() {
-  const [wordIndex, setWordIndex] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true)
-      setTimeout(() => {
-        setWordIndex((prev) => (prev + 1) % words.length)
-        setIsAnimating(false)
-      }, 400)
-    }, 2800)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <section aria-label="Introduction to Digital Engagement Strategy program" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
       {/* Background grid */}
@@ -40,24 +21,6 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
-        {/* Animated headline - engaging, medium-large */}
-        <p className="mb-4 text-balance text-xl font-semibold tracking-tight text-foreground sm:text-2xl md:text-3xl">
-          We Build Digital{" "}
-          <span className="relative inline-block">
-            <span
-              aria-live="polite"
-              aria-atomic="true"
-              className={`inline-block text-primary transition-all duration-400 ${
-                isAnimating
-                  ? "translate-y-4 opacity-0"
-                  : "translate-y-0 opacity-100"
-              }`}
-            >
-              {words[wordIndex]}
-            </span>
-          </span>
-        </p>
-
         {/* Main H1 - largest, bold */}
         <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-6xl lg:text-7xl">
           Marketing – Digital Engagement Strategy Certificate
