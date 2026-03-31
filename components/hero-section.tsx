@@ -5,21 +5,12 @@ import { useState, useEffect } from "react"
 
 export function HeroSection() {
   const [videoLoaded, setVideoLoaded] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Check if mobile on mount and on resize
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-
     // Set video as loaded after a short delay to allow iframe to initialize
     const timer = setTimeout(() => setVideoLoaded(true), 1000)
 
     return () => {
-      window.removeEventListener("resize", checkMobile)
       clearTimeout(timer)
     }
   }, [])
@@ -29,35 +20,31 @@ export function HeroSection() {
       {/* Fallback background - always visible, shown when video not loaded or on mobile */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background via-background to-background/95" />
 
-      {/* Background video - Vimeo iframe embed, only on desktop */}
-      {!isMobile && (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              videoLoaded ? "opacity-40" : "opacity-0"
-            }`}
+      {/* Background video - Vimeo iframe embed */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            videoLoaded ? "opacity-40" : "opacity-0"
+          }`}
+          style={{
+            // Scale up to cover the container and hide Vimeo controls
+            transform: "scale(1.2)",
+          }}
+        >
+          <iframe
+            src="https://player.vimeo.com/video/1179000966?badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1&autoplay=1&playsinline=1"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            referrerPolicy="strict-origin-when-cross-origin"
+            title="Background video"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
-              // Scale up to cover the container and hide Vimeo controls
-              transform: "scale(1.2)",
+              width: "max(100%, 177.77777778vh)", // Always cover width (16:9 ratio)
+              height: "max(100%, 56.25vw)", // Always cover height (16:9 ratio)
             }}
-          >
-            <iframe
-              src="https://player.vimeo.com/video/1179000966?badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1&autoplay=1"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="Background video"
-              className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2"
-              style={{
-                minWidth: "100%",
-                minHeight: "100%",
-                width: "177.77777778vh", // 16:9 aspect ratio
-                height: "56.25vw", // 16:9 aspect ratio
-              }}
-            />
-          </div>
+          />
         </div>
-      )}
+      </div>
 
       {/* Dark overlay for text readability */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-background/75 to-background/85" />
