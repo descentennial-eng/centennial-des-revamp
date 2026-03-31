@@ -2,15 +2,62 @@
 
 import { AnimateOnScroll } from "./animate-on-scroll"
 
-const certificationImages = [
+type CertificationImage = {
+  name: string
+  src?: string
+  lightSrc?: string
+  darkSrc?: string
+}
+
+const certificationImages: CertificationImage[] = [
   { name: "Google Ads", src: "/certification/google-ads-logo.png" },
-  { name: "Google Analytics", src: "/certification/google-analytics.png" },
+  { 
+    name: "Google Analytics", 
+    lightSrc: "/certification/google-analytics-light.png",
+    darkSrc: "/certification/google-analytics-dark.png"
+  },
   { name: "DV360", src: "/certification/googleDV.png" },
   { name: "Hootsuite", src: "/certification/hootsuiteimage.png" },
   { name: "Meta Blueprint", src: "/certification/meta-blueprint.png" },
-  { name: "SEMrush", src: "/certification/sem-rush-image.png" },
+  { 
+    name: "SEMrush", 
+    lightSrc: "/certification/semrush-light.png",
+    darkSrc: "/certification/semrush-dark.png"
+  },
   { name: "Tableau", src: "/certification/tableaulogo.png" },
 ]
+
+function CertImage({ cert }: { cert: CertificationImage }) {
+  const hasThemeVariants = cert.lightSrc && cert.darkSrc
+
+  if (hasThemeVariants) {
+    return (
+      <>
+        <img
+          src={cert.lightSrc}
+          alt={`${cert.name} certification`}
+          className="block h-12 w-auto object-contain dark:hidden sm:h-14 md:h-16 lg:h-20"
+          loading="lazy"
+        />
+        <img
+          src={cert.darkSrc}
+          alt={`${cert.name} certification`}
+          className="hidden h-12 w-auto object-contain dark:block sm:h-14 md:h-16 lg:h-20"
+          loading="lazy"
+        />
+      </>
+    )
+  }
+
+  return (
+    <img
+      src={cert.src}
+      alt={`${cert.name} certification`}
+      className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
+      loading="lazy"
+    />
+  )
+}
 
 export function CertMarquee() {
   // Triple the images for seamless infinite scroll (translateX goes to -33.333%)
@@ -41,12 +88,7 @@ export function CertMarquee() {
               key={`${cert.name}-${i}`}
               className="flex shrink-0 items-center justify-center opacity-70 transition-opacity duration-300 hover:opacity-100"
             >
-              <img
-                src={cert.src}
-                alt={`${cert.name} certification`}
-                className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
-                loading="lazy"
-              />
+              <CertImage cert={cert} />
             </div>
           ))}
         </div>
