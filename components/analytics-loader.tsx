@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { getCookieConsent } from '@/lib/cookie-consent'
 import { injectRedditPixel } from '@/lib/reddit-pixel'
+import { injectMetaPixel } from '@/lib/meta-pixel'
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
@@ -117,6 +118,9 @@ export function AnalyticsLoader() {
 
       // Load Reddit Pixel
       injectRedditPixel()
+
+      // Load Meta Pixel
+      injectMetaPixel()
     }
 
     shouldLoad()
