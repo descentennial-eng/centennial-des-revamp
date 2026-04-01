@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import { AnalyticsLoader } from '@/components/analytics-loader'
 import { CookieConsentBanner } from '@/components/cookie-consent-banner'
+import { ChatWidget } from '@/components/chat-widget'
 
 import './globals.css'
 
@@ -55,6 +56,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <AnalyticsLoader />
           {children}
+          <ChatWidget />
           <CookieConsentBanner />
         </ThemeProvider>
       </body>
