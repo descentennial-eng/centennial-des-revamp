@@ -13,8 +13,8 @@ const navLinks = [
   { label: "Program", href: "#program" },
   { label: "Careers", href: "#careers" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#cta" },
+  { label: "FAQ", href: "#faq" },
 ]
 
 export function Navbar() {
