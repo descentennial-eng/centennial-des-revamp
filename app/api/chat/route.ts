@@ -65,17 +65,25 @@ Yes, students can work part-time while enrolled in the program. The program offe
 `
 
 export async function POST(req: Request) {
-  const { messages }: { messages: UIMessage[] } = await req.json()
+  try {
+    const { messages }: { messages: UIMessage[] } = await req.json()
 
-  const result = streamText({
-    model: 'openai/gpt-4o-mini',
-    system: PROGRAM_KNOWLEDGE,
-    messages: await convertToModelMessages(messages),
-    abortSignal: req.signal,
-  })
+    const result = streamText({
+      model: 'openai/gpt-4o-mini',
+      system: PROGRAM_KNOWLEDGE,
+      messages: await convertToModelMessages(messages),
+      abortSignal: req.signal,
+    })
 
-  return result.toUIMessageStreamResponse({
-    originalMessages: messages,
-    consumeSseStream: consumeStream,
-  })
+    return result.toUIMessageStreamResponse({
+      originalMessages: messages,
+      consumeSseStream: consumeStream,
+    })
+  } catch (error) {
+    console.error('[v0] Chat API error:', error)
+    return new Response(
+      JSON.stringify({ error: 'Failed to process chat request. Please try again.' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    )
+  }
 }

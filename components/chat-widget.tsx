@@ -27,11 +27,18 @@ export function ChatWidget() {
   const [input, setInput] = useState("")
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const { messages, sendMessage, status } = useChat({
+  const { messages, sendMessage, status, error } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
   })
 
   const isLoading = status === "streaming" || status === "submitted"
+
+  // Log error for debugging
+  useEffect(() => {
+    if (error) {
+      console.log("[v0] Chat error:", error)
+    }
+  }, [error])
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -174,6 +181,17 @@ export function ChatWidget() {
                       <Loader2 size={14} className="animate-spin text-muted-foreground" />
                       <span className="text-sm text-muted-foreground">Thinking...</span>
                     </div>
+                  </MessageContent>
+                </Message>
+              )}
+
+              {/* Error message */}
+              {error && (
+                <Message from="assistant">
+                  <MessageContent className="max-w-[85%] rounded-2xl bg-destructive/10 px-4 py-3">
+                    <p className="text-sm text-destructive">
+                      Sorry, I encountered an error. Please try again.
+                    </p>
                   </MessageContent>
                 </Message>
               )}
