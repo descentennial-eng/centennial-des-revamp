@@ -186,19 +186,14 @@ export function TestimonialsSection() {
                 </div>
                 {/* Video Container with 9:16 aspect ratio */}
                 <div className="aspect-[9/16] w-full overflow-hidden rounded-2xl bg-primary-foreground/10 shadow-lg">
-                  <video
-                    className="h-full w-full object-cover"
-                    controls
-                    playsInline
-                    preload="metadata"
-                    poster="/images/testimonial-video-poster.jpg"
-                  >
-                    <source
-                      src="/videos/student-testimonial.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
+                  <iframe
+                    src="https://player.vimeo.com/video/1179289517?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
+                    className="h-full w-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title="Alumni Social"
+                  />
                 </div>
               </div>
             </div>
