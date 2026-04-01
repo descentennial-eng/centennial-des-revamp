@@ -22,6 +22,28 @@ const cofounders: Cofounder[] = [
     name: "Dr. Andrew Ko",
     title: "Industry Relations & Co-founder",
     image: "/images/dr-andrew-ko.jpg",
+    bio: {
+      headline: "Digital Strategist | Behavioural Data Specialist | Marketing Educator",
+      intro:
+        "A digital strategist who refuses to let data be boring; Andrew spends his time at the intersection of human psychology and marketing innovation. With over 15 years of experience leading data-driven strategy across startups, agencies, and global brands, he specializes in turning cold analytics into genuine human experiences.",
+      bullets: [
+        {
+          title: "The Founder's Edge",
+          description:
+            "He co-founded Personalyze, a behavioural intelligence platform that successfully raised $3.0M CAD from OpenOcean, one of Europe's leading data-focused VCs—bringing a high-stakes, venture-backed perspective to everything he builds.",
+        },
+        {
+          title: "The Classroom Architect",
+          description:
+            "As a veteran educator, Andrew ditches the theory for \"day-one\" readiness. He leads student teams through the trenches of real campaign development and programmatic platforms, ensuring every project is portfolio-ready and industry-vetted.",
+        },
+        {
+          title: "Beyond the Dashboard",
+          description:
+            "When he isn't decoding consumer behavior, he's a former DJ and music producer, dog parent to Mochi, and the founder of The Data Human—a project dedicated to making the digital world feel a little more personal.",
+        },
+      ],
+    },
   },
   {
     name: "Prof. Jason Beaulieu",
