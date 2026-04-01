@@ -8,9 +8,6 @@ import { cn } from "@/lib/utils"
 import {
   Conversation,
   ConversationContent,
-  ConversationHeader,
-  ConversationMessages,
-  ConversationInput,
 } from "@/components/ai-elements/conversation"
 import {
   Message,
@@ -78,9 +75,9 @@ export function ChatWidget() {
             : "pointer-events-none translate-y-4 opacity-0"
         )}
       >
-        <Conversation className="flex h-[500px] max-h-[70vh] flex-col">
+        <div className="flex h-[500px] max-h-[70vh] flex-col">
           {/* Header */}
-          <ConversationHeader className="flex-shrink-0 border-b border-border bg-card px-4 py-3">
+          <div className="flex-shrink-0 border-b border-border bg-card px-4 py-3">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <MessageCircle size={20} className="text-primary" />
@@ -94,11 +91,11 @@ export function ChatWidget() {
                 </p>
               </div>
             </div>
-          </ConversationHeader>
+          </div>
 
           {/* Messages */}
-          <ConversationContent className="flex-1 overflow-y-auto">
-            <ConversationMessages className="flex flex-col gap-4 p-4">
+          <Conversation className="flex-1">
+            <ConversationContent className="p-4">
               {messages.length === 0 ? (
                 <div className="flex flex-col gap-4">
                   <Message from="assistant">
@@ -182,11 +179,11 @@ export function ChatWidget() {
               )}
 
               <div ref={messagesEndRef} />
-            </ConversationMessages>
-          </ConversationContent>
+            </ConversationContent>
+          </Conversation>
 
           {/* Input */}
-          <ConversationInput className="flex-shrink-0 border-t border-border bg-card p-3">
+          <div className="flex-shrink-0 border-t border-border bg-card p-3">
             <form onSubmit={handleSubmit} className="flex items-center gap-2">
               <input
                 type="text"
@@ -209,8 +206,8 @@ export function ChatWidget() {
                 )}
               </button>
             </form>
-          </ConversationInput>
-        </Conversation>
+          </div>
+        </div>
       </div>
     </>
   )
