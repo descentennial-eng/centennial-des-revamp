@@ -118,17 +118,17 @@ function FacultyCard({ faculty, index }: { faculty: Cofounder; index: number }) 
           {/* Bio Overlay */}
           {faculty.bio && (
             <div
-              className={`absolute inset-0 flex flex-col bg-gradient-to-t from-black/95 via-black/85 to-black/70 p-6 backdrop-blur-sm transition-all duration-300 ease-in-out ${
+              className={`absolute inset-0 flex flex-col bg-gradient-to-t from-[hsl(240,1%,20%)] via-[hsl(240,1%,24%)]/95 to-[hsl(240,1%,27%)]/90 p-6 backdrop-blur-sm transition-all duration-300 ease-in-out ${
                 isOverlayVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-4 opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
               }`}
             >
-              <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/30">
-                <h4 className="text-lg font-bold text-white">
+              <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary/30">
+                <h4 className="text-lg font-bold text-primary">
                   {faculty.name}
                 </h4>
-                <p className="mt-1 text-sm font-medium text-primary">
+                <p className="mt-1 text-sm font-medium text-white/80">
                   {faculty.bio.headline}
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-white/90">
@@ -138,7 +138,7 @@ function FacultyCard({ faculty, index }: { faculty: Cofounder; index: number }) 
                 <ul className="mt-4 space-y-3">
                   {faculty.bio.bullets.map((bullet) => (
                     <li key={bullet.title} className="text-sm text-white/90">
-                      <span className="font-semibold text-white">
+                      <span className="font-semibold text-primary">
                         {bullet.title}:
                       </span>{" "}
                       {bullet.description}
@@ -148,14 +148,14 @@ function FacultyCard({ faculty, index }: { faculty: Cofounder; index: number }) 
               </div>
 
               {/* Fade effect at bottom */}
-              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[hsl(240,1%,20%)]/80 to-transparent" />
             </div>
           )}
 
           {/* Hover hint for desktop when no bio visible */}
           {faculty.bio && !isOverlayVisible && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 opacity-0 transition-opacity duration-300 md:group-hover:opacity-100">
-              <span className="text-xs font-medium text-white">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-[hsl(240,1%,24%)]/90 px-4 py-2 opacity-0 transition-opacity duration-300 md:group-hover:opacity-100">
+              <span className="text-xs font-medium text-primary">
                 View Bio
               </span>
             </div>
