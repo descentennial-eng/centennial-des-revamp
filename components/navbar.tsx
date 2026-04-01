@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { trackRedditEvent } from "@/lib/reddit-pixel"
 import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 
@@ -88,6 +89,7 @@ export function Navbar() {
           href="https://www.centennialcollege.ca/programs-courses/full-time/marketing-digital-engagement-strategy"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackRedditEvent('Lead')}
           className="hidden items-center bg-primary px-8 text-sm font-bold uppercase tracking-wide text-black transition-colors duration-300 hover:bg-primary/90 md:flex"
         >
           Apply Now
@@ -111,7 +113,10 @@ export function Navbar() {
               href="https://www.centennialcollege.ca/programs-courses/full-time/marketing-digital-engagement-strategy"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
+              onClick={() => {
+                trackRedditEvent('Lead')
+                setMobileOpen(false)
+              }}
               className="mt-2 bg-primary px-6 py-3 text-center text-sm font-bold uppercase tracking-wide text-black"
             >
               Apply Now

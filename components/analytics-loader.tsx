@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { getCookieConsent } from '@/lib/cookie-consent'
+import { injectRedditPixel } from '@/lib/reddit-pixel'
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
@@ -113,6 +114,9 @@ export function AnalyticsLoader() {
         const [primaryId, ...additionalIds] = trackingIds
         injectGtag(primaryId, additionalIds)
       }
+
+      // Load Reddit Pixel
+      injectRedditPixel()
     }
 
     shouldLoad()
