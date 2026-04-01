@@ -47,8 +47,10 @@ export function VideoSection() {
               </p>
               <div className="mt-2">
                 <a
-                  href="#program"
-                  className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
+          href="https://www.centennialcollege.ca/programs-courses/full-time/marketing-digital-engagement-strategy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
                 >
                   Learn More About Our Approach
                   <ArrowRight

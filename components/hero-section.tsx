@@ -77,7 +77,7 @@ export function HeroSection() {
 
         {/* Subheadline - supporting */}
         <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-          Build real campaigns, earn certifications, and access optional co-op. Job-ready in 12 months – apply for September 2026.
+          Build real campaigns, earn certifications, and access optional co-op. Job-ready in 12 months.
         </p>
 
         {/* Badge */}
