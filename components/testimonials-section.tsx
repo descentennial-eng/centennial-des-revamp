@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { AnimateOnScroll } from "./animate-on-scroll"
 
@@ -27,30 +27,38 @@ const testimonials = [
 
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [displayIndex, setDisplayIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const changeSlide = useCallback((newIndex: number) => {
+    if (isAnimating) return
+    setIsAnimating(true)
+    setCurrentIndex(newIndex)
+    
+    // After fade out completes, update the display content
+    setTimeout(() => {
+      setDisplayIndex(newIndex)
+    }, 300)
+    
+    // After full transition completes
+    setTimeout(() => {
+      setIsAnimating(false)
+    }, 600)
+  }, [isAnimating])
 
   const goToNext = useCallback(() => {
-    if (isAnimating) return
-    setIsAnimating(true)
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    setTimeout(() => setIsAnimating(false), 400)
-  }, [isAnimating])
+    changeSlide((currentIndex + 1) % testimonials.length)
+  }, [currentIndex, changeSlide])
 
   const goToPrevious = useCallback(() => {
-    if (isAnimating) return
-    setIsAnimating(true)
-    setCurrentIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    )
-    setTimeout(() => setIsAnimating(false), 400)
-  }, [isAnimating])
+    changeSlide((currentIndex - 1 + testimonials.length) % testimonials.length)
+  }, [currentIndex, changeSlide])
 
   const goToSlide = (index: number) => {
-    if (isAnimating || index === currentIndex) return
-    setIsAnimating(true)
-    setCurrentIndex(index)
-    setTimeout(() => setIsAnimating(false), 400)
+    if (index === currentIndex) return
+    changeSlide(index)
   }
 
   // Auto-play functionality
@@ -64,7 +72,7 @@ export function TestimonialsSection() {
     return () => clearInterval(interval)
   }, [isPaused, goToNext])
 
-  const currentTestimonial = testimonials[currentIndex]
+  const displayedTestimonial = testimonials[displayIndex]
 
   return (
     <section
@@ -101,22 +109,29 @@ export function TestimonialsSection() {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              {/* Testimonial Content with Fade Animation */}
-              <div
-                className={`min-h-[200px] transition-opacity duration-400 ease-in-out ${
-                  isAnimating ? "opacity-0" : "opacity-100"
-                }`}
+              {/* Testimonial Content with Smooth Crossfade Animation */}
+              <div 
+                ref={containerRef}
+                className="relative min-h-[220px] md:min-h-[200px]"
               >
-                <blockquote className="text-lg leading-relaxed text-primary-foreground/90 md:text-xl">
-                  &ldquo;{currentTestimonial.quote}&rdquo;
-                </blockquote>
-                <div className="mt-6 space-y-1">
-                  <p className="text-lg font-semibold text-primary-foreground">
-                    {currentTestimonial.name}
-                  </p>
-                  <p className="text-sm text-primary-foreground/70">
-                    {currentTestimonial.role}
-                  </p>
+                <div
+                  className={`transition-all duration-500 ease-out ${
+                    isAnimating 
+                      ? "opacity-0 translate-y-2" 
+                      : "opacity-100 translate-y-0"
+                  }`}
+                >
+                  <blockquote className="text-lg leading-relaxed text-primary-foreground/90 md:text-xl">
+                    &ldquo;{displayedTestimonial.quote}&rdquo;
+                  </blockquote>
+                  <div className="mt-6 space-y-1">
+                    <p className="text-lg font-semibold text-primary-foreground">
+                      {displayedTestimonial.name}
+                    </p>
+                    <p className="text-sm text-primary-foreground/70">
+                      {displayedTestimonial.role}
+                    </p>
+                  </div>
                 </div>
               </div>
 
