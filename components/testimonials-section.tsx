@@ -78,41 +78,39 @@ export function TestimonialsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="bg-primary py-20 md:py-28"
+      className="bg-primary py-16 md:py-20"
     >
       <div className="mx-auto max-w-7xl px-6">
-        {/* Header - Centered at the top */}
-        <AnimateOnScroll>
-          <div className="mb-12 text-center lg:mb-0 lg:text-left">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground/70">
-              Alumni Voices
-            </p>
-            <h2
-              id="testimonials-heading"
-              className="text-balance text-3xl font-bold text-primary-foreground md:text-5xl"
-            >
-              Their Words, Your Future
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-pretty text-primary-foreground/80 lg:mx-0">
-              Real stories from graduates who turned their digital marketing
-              ambitions into thriving careers.
-            </p>
-          </div>
-        </AnimateOnScroll>
-
-        {/* Two Column Layout */}
-        <div className="mt-12 grid grid-cols-1 items-center gap-10 lg:mt-16 lg:grid-cols-[1fr_auto] lg:gap-12">
-          {/* Left Column - Testimonial Slider */}
+        {/* Two Column Layout - Header integrated into left column */}
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-12">
+          {/* Left Column - Header + Testimonial Slider */}
           <AnimateOnScroll animation="fade-in-left" delay={100}>
             <div
-              className="space-y-6 lg:max-w-2xl"
+              className="space-y-8"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
+              {/* Header Content */}
+              <div className="text-center lg:text-left">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground/70">
+                  Alumni Voices
+                </p>
+                <h2
+                  id="testimonials-heading"
+                  className="text-balance text-3xl font-bold text-primary-foreground md:text-4xl lg:text-5xl"
+                >
+                  Their Words, Your Future
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-pretty text-primary-foreground/80 lg:mx-0">
+                  Real stories from graduates who turned their digital marketing
+                  ambitions into thriving careers.
+                </p>
+              </div>
+
               {/* Testimonial Content with Smooth Crossfade Animation */}
               <div 
                 ref={containerRef}
-                className="relative min-h-[220px] md:min-h-[200px]"
+                className="relative min-h-[200px] md:min-h-[180px]"
               >
                 <div
                   className={`transition-all duration-500 ease-out ${
@@ -136,7 +134,7 @@ export function TestimonialsSection() {
               </div>
 
               {/* Navigation Controls */}
-              <div className="flex items-center gap-4 pt-4">
+              <div className="flex items-center justify-center gap-4 lg:justify-start">
                 {/* Arrow Buttons */}
                 <div className="flex gap-2">
                   <button
@@ -176,16 +174,16 @@ export function TestimonialsSection() {
             </div>
           </AnimateOnScroll>
 
-          {/* Right Column - Vertical Video (unchanged) */}
+          {/* Right Column - Vertical Video */}
           <AnimateOnScroll animation="fade-in-right" delay={200}>
             <div className="flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[300px]">
+              <div className="relative w-full max-w-[280px]">
                 {/* Video Label Overlay */}
                 <div className="absolute left-3 top-3 z-10 rounded-full bg-primary-foreground/90 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
                   Student Story
                 </div>
                 {/* Video Container with 9:16 aspect ratio */}
-                <div className="aspect-[9/16] w-full overflow-hidden rounded-2xl bg-primary-foreground/10 shadow-lg">
+                <div className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-primary-foreground/10 shadow-lg">
                   <iframe
                     src="https://player.vimeo.com/video/1179289517?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                     className="h-full w-full"
