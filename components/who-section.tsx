@@ -37,7 +37,7 @@ const personas = [
 
 export function WhoSection() {
   return (
-    <section className="relative py-24 md:py-32">
+    <section id="careers" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <AnimateOnScroll>
           <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-primary">
