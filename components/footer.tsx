@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Instagram, Linkedin } from "lucide-react"
+import { Facebook, Instagram, Linkedin } from "lucide-react"
 import { DesLogo } from "./des-logo"
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -78,6 +78,15 @@ export function Footer() {
               className="text-muted-foreground transition-colors hover:text-primary"
             >
               <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61584426223203&mibextid=ZbWKwL"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow DES Centennial on Facebook (opens in new tab)"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              <Facebook className="h-5 w-5" />
             </a>
           </nav>
         </div>
