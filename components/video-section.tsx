@@ -1,7 +1,7 @@
 "use client"
 
 import { AnimateOnScroll } from "./animate-on-scroll"
-import { Play, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export function VideoSection() {
   return (
@@ -17,22 +17,17 @@ export function VideoSection() {
         </AnimateOnScroll>
 
         <div className="mt-16 grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 md:items-center ">
-          {/* Video Placeholder */}
+          {/* Video Embed */}
           <AnimateOnScroll animation="fade-in-up" delay={100} className="h-full">
-            <div className="group relative w-full min-h-[360px] md:min-h-[420px] lg:min-h-[460px] overflow-hidden rounded-2xl border border-border bg-card">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button
-                  type="button"
-                  aria-label="Play video"
-                  className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 transition-all duration-300 group-hover:scale-110 md:h-20 md:w-20"
-                >
-                  <Play size={28} fill="currentColor" className="ml-1" />
-                </button>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-sm text-muted-foreground">Program Overview</p>
-              </div>
+            <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-card" style={{ paddingTop: "56.25%" }}>
+              <iframe
+                src="https://player.vimeo.com/video/1179661724?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="absolute top-0 left-0 w-full h-full"
+                title="Program Overview"
+              />
             </div>
           </AnimateOnScroll>
 
