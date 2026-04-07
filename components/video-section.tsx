@@ -21,12 +21,12 @@ export function VideoSection() {
           <AnimateOnScroll animation="fade-in-up" delay={100} className="h-full">
             <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-card" style={{ paddingTop: "56.25%" }}>
               <iframe
-                src="https://player.vimeo.com/video/1179661724?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
+                src="https://player.vimeo.com/video/1180894389?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                 frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 className="absolute top-0 left-0 w-full h-full"
-                title="Program Overview"
+                title="experience-video-2"
               />
             </div>
           </AnimateOnScroll>
