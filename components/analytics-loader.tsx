@@ -7,7 +7,7 @@ import { injectMetaPixel } from '@/lib/meta-pixel'
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
-const GTM_ID = 'GTM-KQXDB4HZ'
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 const GTAG_SCRIPT_ID = 'gtag-script'
 const GTAG_INIT_ID = 'gtag-init'
 const GTM_SCRIPT_ID = 'gtm-script'
