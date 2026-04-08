@@ -68,7 +68,7 @@ export function CtaSection() {
             </div>
 
             {/* Contact Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <label htmlFor="fullName" className="text-sm font-medium text-foreground">
                   Full Name
