@@ -97,14 +97,14 @@ export function AnalyticsLoader() {
   const consentCheckedRef = useRef(false)
 
   useEffect(() => {
-    const shouldLoad = () => {
+    // Load Google Tag Manager immediately (always, regardless of consent)
+    if (GTM_ID) {
+      injectGtm(GTM_ID)
+    }
+
+    const loadConsentBasedTracking = () => {
       const consent = getCookieConsent()
       if (consent !== 'accepted') return
-
-      // Load Google Tag Manager
-      if (GTM_ID) {
-        injectGtm(GTM_ID)
-      }
 
       // Collect all available tracking IDs for gtag
       const trackingIds: string[] = []
@@ -123,13 +123,13 @@ export function AnalyticsLoader() {
       injectMetaPixel()
     }
 
-    shouldLoad()
+    loadConsentBasedTracking()
 
     const handleConsentUpdated = () => {
       if (!consentCheckedRef.current) {
         consentCheckedRef.current = true
       }
-      shouldLoad()
+      loadConsentBasedTracking()
     }
 
     window.addEventListener('consentUpdated', handleConsentUpdated)
